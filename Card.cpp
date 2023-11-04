@@ -1,5 +1,6 @@
 #include "Card.hpp"
-// #include <iostream>
+
+
 
 
 
@@ -9,7 +10,7 @@
          * @post: Destroy the Card object
         */
         Card::~Card() {
-            delete bitmap_;
+            delete[] bitmap_;
             std::cout << "Card objects are cleared" << std::endl;
         
         }
@@ -20,9 +21,24 @@
          * @param: const reference to a Card object
         */
         Card::Card(const Card& rhs) {
-
-            // cardType_ = rhs.cardType_;
-            bitmap_ = new int {*rhs.bitmap_};
+            
+            //copying everying except the pointer 
+            cardType_ = rhs.cardType_;
+            instruction_ = rhs.instruction_;
+            drawn_ = rhs.drawn_;
+            
+            //allocation mem for new array 
+            if (rhs.bitmap_ != nullptr) {
+                bitmap_ = new int [80];
+            for (int i =0; i < 80; i++) {
+                bitmap_[i] = rhs.bitmap_[i];
+            }
+            }
+            else {
+                bitmap_ = nullptr;
+            }
+            
+            
         }
         /**
          * Copy Assignment Operator
@@ -30,19 +46,45 @@
          * @return this Card object
          */
         Card& Card::operator=(const Card& rhs) {
-            if ( this != &rhs ) 
-                    *bitmap_ = *rhs.bitmap_;
-            return *this;
-    
+            
+            if (this != &rhs) {
+                cardType_ = rhs.cardType_;
+                instruction_ = rhs.instruction_;
+                drawn_ = rhs.drawn_;
+
+                delete[] bitmap_; // two object that are same type copy ob2 to 1 
+                if (rhs.bitmap_ != nullptr){ //confirming there values in the array bitmap is pointing to array 
+                    bitmap_ = new int [80];
+                    for (int i =0; i < 80; i++) {
+                bitmap_[i] = rhs.bitmap_[i];
+            }
+                }
+
+                else  {  // rhs.bitmap_ == nullptr (assignment to say equal to each other)
+                    bitmap_ = nullptr;
+                }
+
+            }
+
+            return *this;  // this a reference is pointer to current Card object 
+            
+         
         }
         
         /**
          * Move Constructor
          * @param: rvalue reference to a Card object 
         */
-        Card::Card(Card&& rhs){
-            rhs.bitmap_ = nullptr;
-        }
+    Card::Card(Card&& rhs) {
+        //lvalue into rvalue references in order to transfer and copy values 
+        // because rvalues references are temp and deleted naturally 
+
+    cardType_ = std::move(rhs.cardType_);
+    instruction_ = std::move(rhs.instruction_);
+    drawn_ = std::move(rhs.drawn_);
+    bitmap_ = std::move(rhs.bitmap_);
+    
+}
         
         
         /**
@@ -52,8 +94,14 @@
         */
         Card& Card::operator=(Card&& rhs){
             
+            std::swap( cardType_, rhs.cardType_);
+            std::swap( instruction_, rhs.instruction_);
+            std::swap( drawn_, rhs.drawn_);
             std::swap( bitmap_, rhs.bitmap_);
+            
             return *this; 
+
+
         }
         
        
@@ -64,7 +112,7 @@
         Card::Card() {
             
             cardType_ = POINT_CARD; 
-            std:: string instruction_ = "Default";
+            instruction_ = "";
             bitmap_ = nullptr;
             drawn_ = false; 
 
@@ -74,10 +122,10 @@
          * @return the string representation of the card type
          */
         std::string Card::getType() const{
-            if (cardType_ == CardType::ACTION_CARD) {
+            if (cardType_ == ACTION_CARD) {
                 return "This is an Action Card";
             }
-            else if (cardType_ == CardType::POINT_CARD) {
+            else if (cardType_ == POINT_CARD) {
                 return "This a Point Card";
             }
             else {
@@ -117,7 +165,7 @@
          * @post: Set the image data
          * @param pointer to an array of integers
          */
-        void Card::setImageData(int* data){
+        void Card::setImageData(int* data){ 
             bitmap_ = data;
         }
 

@@ -11,6 +11,7 @@ Card.hpp defines the Card class and its member functions.
 
 #include <iostream>
 #include <string>
+#include <utility>
 
 enum CardType 
 {
