@@ -19,9 +19,32 @@
          * SWAP HAND WITH OPPONENT : swap the hand with the opponent
         */
          bool ActionCard::isPlayable() { 
+            if (getDrawn() == true) { 
+                
+            // std::string instruction = getInstruction();
+            std::string drawPlayCards = "[A-Z ]+[ 0-9]+[A-Z]+\\([A-Z]\\)"; //regex instruction for draw and play 
+            std::string reverseSwapCards = "[A-Z ]+"; 
+
+            std::regex DrawPlayRegex(drawPlayCards);
+            std::regex reverseSwapRegex(reverseSwapCards);
             
-           
+            if (regex_match(getInstruction(), DrawPlayRegex)) {
+                return true;
+            }
+
+            else if (regex_match(getInstruction(), reverseSwapRegex)) {
+                return true;
+            }
+
+            return true;
+
+            }
+            
+            else {
+                return false;
+            }
         }
+
         
         /**
          * @post: Print the ActionCard in the following format:
@@ -46,12 +69,21 @@
             else { 
                std::cout <<"No image data"<< std::endl;
             }
-
-            
-
-    
     
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //if (getDrawn() == true) { 
