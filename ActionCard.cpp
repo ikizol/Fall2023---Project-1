@@ -21,28 +21,28 @@
          bool ActionCard::isPlayable() { 
             if (getDrawn() == true) { 
                 
-            // std::string instruction = getInstruction();
+            
             std::string drawPlayCards = "[A-Z ]+[ 0-9]+[A-Z]+\\([A-Z]\\)"; //regex instruction for draw and play 
             std::string reverseSwapCards = "[A-Z ]+"; 
 
-            std::regex DrawPlayRegex(drawPlayCards);
-            std::regex reverseSwapRegex(reverseSwapCards);
+            std::regex DrawPlay(drawPlayCards);
+            std::regex ReverseSwap(reverseSwapCards);
             
-            if (regex_match(getInstruction(), DrawPlayRegex)) {
+            if (regex_match(getInstruction(), DrawPlay)) {
                 return true;
             }
 
-            else if (regex_match(getInstruction(), reverseSwapRegex)) {
+            else if (regex_match(getInstruction(), ReverseSwap)) {
                 return true;
             }
 
-            return true;
-
-            }
-            
             else {
                 return false;
             }
+            }
+                
+            return false;
+            
         }
 
         
