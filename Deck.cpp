@@ -14,7 +14,10 @@ Card.hpp defines the Card class and its member functions.
          */
         template<typename CardType>
         Deck<CardType>::Deck() {
+            std::vector<CardType> cards_;
 
+            
+            
 
         }
 
@@ -23,7 +26,8 @@ Card.hpp defines the Card class and its member functions.
          */
         template<typename CardType>
         Deck<CardType>::~Deck() {
-
+            
+            cards_.clear()
         }
 
         /**
@@ -50,6 +54,11 @@ Card.hpp defines the Card class and its member functions.
          */
         template<typename CardType>
         bool Deck<CardType>::IsEmpty() const{
+            if (cards_.empty()){
+                return true;
+            }
+            else 
+                return false;
 
         }
 
@@ -63,10 +72,11 @@ Card.hpp defines the Card class and its member functions.
         template<typename CardType>
         void Deck<CardType>::Shuffle(){
 
-            std::mt19937;
+            std::mt19937 seed_Value;
+            seed_Value.seed(2028358904);
+
+            std::shuffle(cards_.begin(), cards_.end(), seed_Value);
             
-
-
         }
 
         /**
@@ -74,13 +84,14 @@ Card.hpp defines the Card class and its member functions.
          */
         template<typename CardType>
         int Deck<CardType>::getSize() const {
-
+                
+                return cards_.size();
         }
 
         /**
          * @return the vector of cards in the deck 
          */
         template<typename CardType>
-        std::vector<CardType> getDeck() const {
+        std::vector<CardType> Deck<CardType>::getDeck() const {
             return card_;
         }
