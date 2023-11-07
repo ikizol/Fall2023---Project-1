@@ -3,49 +3,55 @@ CSCI335 Fall 2023
 Assignment 1 – Card Game
 Name Genesis Castillo
 Date 11/06/23
-Deck.hpp defines the Deck class.
+Card.hpp defines the Card class and its member functions.
 */
-#ifndef DECK_HPP
-#define DECK_HPP
 
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#include "Card.hpp"
-#include <random>
+#include "Deck.hpp"
 
 
-template <typename CardType>
-class Deck 
-{
-    public:
-        /**
+ /**
          * @post: Construct a new Deck object
          */
-        Deck();
+        template<typename CardType>
+        Deck<CardType>::Deck() {
+
+
+        }
 
         /**
          * @post: Destroy the Deck object 
          */
-        ~Deck();
+        template<typename CardType>
+        Deck<CardType>::~Deck() {
+
+        }
 
         /**
          * @post: Add a Card to the Deck
          * @param: const reference to CardType card
          */
-        void AddCard(const CardType& card){}
+        template<typename CardType>
+        void Deck<CardType>::AddCard(const CardType& card){
+
+        }
 
         /**
          * @post: Draw a card from the deck
          * @pre: the deck is not empty
          * @return the right hand value of type CardType 
          */
-        CardType&& Draw();
+        template<typename CardType>
+        CardType&& Deck<CardType>::Draw(){
+
+        }
 
         /**
          * @return if the deck is empty 
          */
-        bool IsEmpty() const;
+        template<typename CardType>
+        bool Deck<CardType>::IsEmpty() const{
+
+        }
 
         /**
          * @post: Shuffle the deck 
@@ -54,21 +60,27 @@ class Deck
          * https://en.cppreference.com/w/cpp/algorithm/random_shuffle
          * https://en.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine
          */
-        void Shuffle();
+        template<typename CardType>
+        void Deck<CardType>::Shuffle(){
+
+            std::mt19937;
+            
+
+
+        }
 
         /**
          * @return the size of the deck 
          */
-        int getSize() const;
+        template<typename CardType>
+        int Deck<CardType>::getSize() const {
+
+        }
 
         /**
          * @return the vector of cards in the deck 
          */
-        std::vector<CardType> getDeck() const;
-
-    private:
-        std::vector<CardType> cards_;
-};
-
-#include "Deck.cpp"
-#endif
+        template<typename CardType>
+        std::vector<CardType> getDeck() const {
+            return card_;
+        }

@@ -1,3 +1,12 @@
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name Genesis Castillo
+Date 11/05/23
+PointCard.hpp defines the PointCard class and inherits from the Card Class.
+*/
+
+
 #include "ActionCard.hpp"
 
 

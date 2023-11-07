@@ -1,3 +1,12 @@
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name Genesis Castillo
+Date 11/03/23
+Card.hpp defines the Card class and its member functions.
+*/
+
+
 #include "Card.hpp"
 
 
