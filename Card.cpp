@@ -130,10 +130,10 @@ Card.hpp defines the Card class and its member functions.
          */
         std::string Card::getType() const{
             if (cardType_ == ACTION_CARD) {
-                return "ACTION CARD";
+                return "ACTION_CARD";
             }
             else if (cardType_ == POINT_CARD) {
-                return "POINT CARD";
+                return "POINT_CARD";
             } 
           };
              
