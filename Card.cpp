@@ -132,7 +132,7 @@ Card.hpp defines the Card class and its member functions.
             if (cardType_ == ACTION_CARD) {
                 return "ACTION_CARD";
             }
-            else if (cardType_ == POINT_CARD) {
+            else {
                 return "POINT_CARD";
             } 
           };
