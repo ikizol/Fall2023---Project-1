@@ -15,6 +15,11 @@ PointCard.hpp defines the PointCard class and inherits from the Card Class.
          * @post: Construct a new Action Card object
         */
         ActionCard::ActionCard() : Card(){
+            setType(ACTION_CARD);
+            setInstruction("");
+            setDrawn(false);
+            setImageData(nullptr);
+
         //do this for Point Card 
         }
 
