@@ -111,6 +111,7 @@ class Deck
         CardType&& Deck<CardType>::Draw(){
             if (!IsEmpty()) {
                CardType&& new_Card = std::move(cards_.back());
+               cards_.pop_back();
                return std::move(new_Card);
             }
         };
