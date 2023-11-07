@@ -20,8 +20,6 @@ Card.hpp defines the Card class and its member functions.
         */
         Card::~Card() {
             delete[] bitmap_;
-            // std::cout << "Card objects are cleared" << std::endl;
-        
         }
             
         /**
@@ -137,7 +135,7 @@ Card.hpp defines the Card class and its member functions.
             else {
                 return "POINT_CARD";
             } 
-        }
+          };
              
         /**
          * @post: set the card type
