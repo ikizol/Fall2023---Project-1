@@ -23,7 +23,7 @@
          */
         template<typename CardType>
         void Deck<CardType>::AddCard(const CardType& card){
-                cards_.insert(card); 
+                cards_.push_back(card); 
         };
 
         /**
@@ -35,7 +35,7 @@
         CardType&& Deck<CardType>::Draw(){
             if (!IsEmpty()) {
                CardType&& new_Card = std::move(cards_.back()); //rvalue reference
-              
+               cards_.pop_back();
                return std::move(new_Card);
             }
         };

@@ -5,6 +5,9 @@ Name Genesis Castillo
 Date 11/06/23
 Deck.hpp defines the Deck class.
 */
+
+// #pragma once
+
 #ifndef DECK_HPP
 #define DECK_HPP
 
@@ -33,7 +36,7 @@ class Deck
          * @post: Add a Card to the Deck
          * @param: const reference to CardType card
          */
-        void AddCard(const CardType& card){}
+        void AddCard(const CardType& card);
 
         /**
          * @post: Draw a card from the deck
@@ -72,8 +75,3 @@ class Deck
 
 #include "Deck.cpp"
 #endif
-
-
-
-
- 
