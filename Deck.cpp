@@ -14,12 +14,8 @@ Card.hpp defines the Card class and its member functions.
          */
         template<typename CardType>
         Deck<CardType>::Deck() {
-            std::vector<CardType> cards_;
-
-            
-            
-
-        }
+            cards_; //this vector starts out empty for each object of this class
+        };
 
         /**
          * @post: Destroy the Deck object 
@@ -28,7 +24,7 @@ Card.hpp defines the Card class and its member functions.
         Deck<CardType>::~Deck() {
             
             cards_.clear()
-        }
+        };
 
         /**
          * @post: Add a Card to the Deck
@@ -36,8 +32,8 @@ Card.hpp defines the Card class and its member functions.
          */
         template<typename CardType>
         void Deck<CardType>::AddCard(const CardType& card){
-
-        }
+                cards_.insert(card); 
+        };
 
         /**
          * @post: Draw a card from the deck
@@ -46,8 +42,11 @@ Card.hpp defines the Card class and its member functions.
          */
         template<typename CardType>
         CardType&& Deck<CardType>::Draw(){
-
-        }
+            if (!IsEmpty()) {
+               CardType&& new_Card = std::move(cards_.back());
+               return std::move(new_Card);
+            }
+        };
 
         /**
          * @return if the deck is empty 
@@ -56,11 +55,13 @@ Card.hpp defines the Card class and its member functions.
         bool Deck<CardType>::IsEmpty() const{
             if (cards_.empty()){
                 return true;
+                std::cout << "true" << std::endl;
             }
             else 
                 return false;
+                std::cout << "false" << std::endl;
 
-        }
+        };
 
         /**
          * @post: Shuffle the deck 
@@ -77,7 +78,7 @@ Card.hpp defines the Card class and its member functions.
 
             std::shuffle(cards_.begin(), cards_.end(), seed_Value);
             
-        }
+        };
 
         /**
          * @return the size of the deck 
@@ -86,12 +87,12 @@ Card.hpp defines the Card class and its member functions.
         int Deck<CardType>::getSize() const {
                 
                 return cards_.size();
-        }
+        };
 
         /**
          * @return the vector of cards in the deck 
          */
         template<typename CardType>
         std::vector<CardType> Deck<CardType>::getDeck() const {
-            return card_;
-        }
+            return cards_;
+        };
