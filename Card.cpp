@@ -137,9 +137,9 @@ Card.hpp defines the Card class and its member functions.
             else if (cardType_ == POINT_CARD) {
                 return "POINT_CARD";
             }
-            else {
-                return "Type of card does not exist";
-            }  
+            // else {
+            //     return "Type of card does not exist";
+            // }  
 
         }
         /**
