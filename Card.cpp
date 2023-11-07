@@ -134,14 +134,11 @@ Card.hpp defines the Card class and its member functions.
             if (cardType_ == ACTION_CARD) {
                 return "ACTION_CARD";
             }
-            else if (cardType_ == POINT_CARD) {
+            else {
                 return "POINT_CARD";
-            }
-            // else {
-            //     return "Type of card does not exist";
-            // }  
-
+            } 
         }
+             
         /**
          * @post: set the card type
          * @param const reference to a CardType object
