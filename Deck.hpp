@@ -99,7 +99,7 @@ class Deck
          */
         template<typename CardType>
         void Deck<CardType>::AddCard(const CardType& card){
-                cards_.insert(card); 
+                cards_.push_back(card); 
         };
 
         /**
@@ -122,11 +122,9 @@ class Deck
         bool Deck<CardType>::IsEmpty() const{
             if (cards_.empty()){
                 return true;
-                std::cout << "true" << std::endl;
             }
             else 
                 return false;
-                std::cout << "false" << std::endl;
 
         };
 
