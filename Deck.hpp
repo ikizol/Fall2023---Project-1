@@ -70,7 +70,7 @@ class Deck
         std::vector<CardType> cards_;
 };
 
-#include "Deck.cpp"
+// #include "Deck.cpp"
 #endif
 
 
@@ -110,8 +110,8 @@ class Deck
         template<typename CardType>
         CardType&& Deck<CardType>::Draw(){
             if (!IsEmpty()) {
-               CardType&& new_Card = std::move(cards_.back());
-               cards_.pop_back();
+               CardType&& new_Card = std::move(cards_.back()); //rvalue reference
+              
                return std::move(new_Card);
             }
         };
