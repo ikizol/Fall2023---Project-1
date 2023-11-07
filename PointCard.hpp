@@ -5,6 +5,7 @@ Name Genesis Castillo
 Date 11/05/23
 PointCard.hpp defines the PointCard class and inherits from the Card Class.
 */
+
 #ifndef POINTCARD_HPP
 #define POINTCARD_HPP
 

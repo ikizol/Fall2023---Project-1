@@ -69,29 +69,3 @@ PointCard.hpp defines the PointCard class and inherits from the Card Class.
                std::cout <<"No image data"<< std::endl;
             }
         }
-
-
-
-        
-
-
-
-        // if (getDrawn()) {
-
-        //         if (getInstruction() != "DRAW x CARD(S)" || "PLAY x CARD(S)") {
-        //             return false;
-        //         }
-
-        //         else if (getInstruction() == "DRAW x CARD(S)" || "PLAY x CARD(S)") {
-        //             int x;
-        //             if (x > 0) {
-        //                 return true;
-        //             }
-                   
-        //         }
-
-        //         return true;
-        //     }
-
-        //     else 
-        //         return false;
