@@ -56,7 +56,7 @@ PointCard.hpp defines the PointCard class and inherits from the Card Class.
          */
         void PointCard::Print() const {
 
-            std::cout << "Card Type: " << getType() << std::endl;
+            std::cout << "Type: " << getType() << std::endl;
             std::cout << "Points: " << getInstruction() << std::endl;
             std::cout << "Card: "<< std::endl;
             if (getImageData() != nullptr){

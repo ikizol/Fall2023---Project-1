@@ -70,7 +70,7 @@ PointCard.hpp defines the PointCard class and inherits from the Card Class.
          * Note: For [ImageData]: If there is no image data, print "No image data" instead
          */
         void ActionCard::Print() const {
-            std::cout << "Card Type: " << getType() << std::endl;
+            std::cout << "Type: " << getType() << std::endl;
             std::cout << "Instruction: " << getInstruction() << std::endl;
             std::cout << "Card: "<< std::endl;
             if (getImageData() != nullptr){
