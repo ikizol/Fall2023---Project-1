@@ -27,10 +27,12 @@ Player.cpp implements the Player class.
         Player::~Player(){
             if (actiondeck_ != nullptr){
                 delete actiondeck_;
+                actiondeck_ = nullptr;
             }
 
            if (pointdeck_ != nullptr){
                 delete actiondeck_;
+                pointdeck_ - nullptr;
         }
 
         /**
@@ -74,13 +76,12 @@ Player.cpp implements the Player class.
          * PLAYING ACTION CARD: [instruction]
          */
         void Player::play(ActionCard&& card){
-        std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
+            std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
 
-                    ActionCard actioncard = card.isPlayable();
-                    if (actioncard == true) {
-                        
-                        card.PlayCard();
-        }
+            ActionCard actioncard = card.isPlayable();
+             if (actioncard == true) {
+                    card.PlayCard();
+                }
 
             }
 
