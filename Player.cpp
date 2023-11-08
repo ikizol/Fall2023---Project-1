@@ -74,18 +74,27 @@ Player.cpp implements the Player class.
          * PLAYING ACTION CARD: [instruction]
          */
         void Player::play(ActionCard&& card){
+        std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
 
-            std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
+                    ActionCard actioncard = card.isPlayable();
+                    if (actioncard == true) {
+                        
+                        card.PlayCard();
         }
 
+            }
 
         /**
          * @post: Draw a point card and place it in the player's hand
          */
         void Player::drawPointCard(){
            
-            PointCard pointcard = pointdeck_.Draw(); 
-            Hand player_hand = pointcard.addCard();
+           if (!pointdeck_.isEmpty()) {
+                PointCard pointcard = pointdeck_.Draw(); 
+                Hand player_hand = pointcard.addCard();
+
+           }
+            
 
         }
 
@@ -95,11 +104,13 @@ Player.cpp implements the Player class.
          * @post: Play a point card from the player's hand and update the player's score
          */
         void Player::playPointCard(){
-
-            Hand playerHand = pointdeck_.PlayCard();
-            int playerPoint_ = pointdeck_.getInstruction();
             
-
+            PointCard pointcard = pointdeck.isPlayable();
+            
+            if (pointcard == true) {
+                Hand playerHand = pointdeck_.PlayCard();
+                int playerPoint_ = pointdeck_.getInstruction();
+            }
 
         }
 
@@ -152,7 +163,6 @@ Player.cpp implements the Player class.
          * @return: a pointer to the player's point deck
          */
         Deck<PointCard>* Player::getPointDeck(){
-
             return pointdeck_;
 
         }
