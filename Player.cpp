@@ -32,7 +32,7 @@ Player.cpp implements the Player class.
 
            if (pointdeck_ != nullptr){
                 delete actiondeck_;
-                pointdeck_ - nullptr;
+                pointdeck_ = nullptr;
         }
 
         /**
@@ -112,7 +112,8 @@ Player.cpp implements the Player class.
                 
                 PointCard pointcard = pointdeck_ -> isPlayable();
                 hand_ = pointdeck_ -> PlayCard(pointcard);
-                int playerPoint_ = pointdeck -> getInstruction(hand_);
+                int playerPoint_ = getInstruction(hand_);
+                score_ += playerPoint_;
             }
 
         }
