@@ -24,12 +24,14 @@ Hand.cpp Defines the Hand class.
             cards_.clear();
 
         }
+
         /**
          * Copy Constructor
          * @param: other Hand object
          */
         Hand::Hand(const Hand& other){
-
+            cards_ = other.cards_;
+            
         }
         /**
          * Copy Assignment Operator
@@ -38,12 +40,18 @@ Hand.cpp Defines the Hand class.
          */
         Hand& Hand::operator=(const Hand& other){
 
+            if(this != &other) {
+                cards_ = other.cards_;
+            }
+
+            return *this;
         }
         /**
          * Move Constructor
          * @param: other Hand object
          */
         Hand::Hand(Hand&& other){
+            cards_ = std::move(other.cards_);
 
         }
         /**
@@ -51,14 +59,16 @@ Hand.cpp Defines the Hand class.
          * @param: other Hand object
          * @return this Hand
          */
-        Hand& Hand::operator=(Hand&& other){
-
+        Hand& Hand::operator=(Hand&& other){    
+            std::swap(cards_ ,other.cards_);
+            return *this;
         }
 
         /**
          * @return Hand
          */
         const std::deque<PointCard>& Hand::getCards() const{
+                return cards_;
 
         }
         
@@ -67,7 +77,8 @@ Hand.cpp Defines the Hand class.
          * @param PointCard object
          */
         void Hand::addCard(PointCard&& card){
-
+            card.setDrawn(true);
+            cards_.push_back(std::move(card));
         }
 
         /**
@@ -87,38 +98,11 @@ Hand.cpp Defines the Hand class.
          */
         void Hand::Reverse(){
             
-           if (cards_.empty()) {
-                return;
+          std::reverse(cards_.begin(), cards_.end());
 
            }
 
-           else {
-                /* Use for loop to traverse from from last element 
-                 *then push this order into new queue
-                 *then tranfer this info back into orginal deque 
-                 *
-                **/
-                
-                for (int i = 0; i < cards_.size(); i--) {
-                    cards_.pop_back(i);
-                    std::deque<PointCard> PointQueue;
-                    PointQueue.push_front(i);
-                }
-                
-                
-                PointCard element = cards_.front();
-                
-
-
-
-
-           }
-
-    }
-
-
-
-
+        
         /**
          * @post: Play the card at the front of the hand, removing it from the hand
          * Throws an exception if the hand is empty or the card is not playable
@@ -126,5 +110,18 @@ Hand.cpp Defines the Hand class.
          * @return the points earned from playing the card
          */
         int Hand::PlayCard(){
+            PointCard card = cards_.front();
+            cards_.pop_front();
+
+            if(isEmpty() || !card.isPlayable()) {
+                throw std::runtime_error("Invalid Arguement"); 
+                cards_.pop_front();   
+            }
+
+            else {
+                int points_ = std::stoi(card.getInstruction());
+                return points_;
+            }
+    
 
         }
