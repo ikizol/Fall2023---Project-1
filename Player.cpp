@@ -83,16 +83,22 @@ Player.cpp implements the Player class.
          * @post: Draw a point card and place it in the player's hand
          */
         void Player::drawPointCard(){
+           
             PointCard pointcard = pointdeck_.Draw(); 
             Hand player_hand = pointcard.addCard();
+
         }
 
+        
 
         /**
          * @post: Play a point card from the player's hand and update the player's score
          */
         void Player::playPointCard(){
-            PointCard pointcard = pointdeck_.PlayCard();
+
+            Hand playerHand = pointdeck_.PlayCard();
+            int playerPoint_ = pointdeck_.getInstruction();
+            
 
 
         }
@@ -103,7 +109,7 @@ Player.cpp implements the Player class.
          * @param a pointer to a Player opponent 
          */
         void Player::setOpponent(Player* opponent){
-
+                opponent_ = oppenent; 
         }
 
 
@@ -111,6 +117,7 @@ Player.cpp implements the Player class.
          * @return: a pointer to the player's opponent
          */
         Player* Player::getOpponent(){
+            return opponent;
 
         }
 
@@ -120,7 +127,7 @@ Player.cpp implements the Player class.
          * @param: A pointer to a deck holding Action cards 
          */
         void Player::setActionDeck(Deck<ActionCard>* actiondeck){
-
+                actiondeck_ = actiondeck;
         }
 
 
@@ -128,7 +135,7 @@ Player.cpp implements the Player class.
          * @return a pointer to the player's action deck
          */
         Deck<ActionCard>* Player::getActionDeck(){
-
+            return actiondeck_;
         }
 
 
@@ -137,7 +144,7 @@ Player.cpp implements the Player class.
          * @param: A pointer to a deck holding Point cards
          */
         void Player::setPointDeck(Deck<PointCard>* pointdeck){
-
+                pointdeck_ = pointdeck;
         }
 
 
@@ -146,4 +153,27 @@ Player.cpp implements the Player class.
          */
         Deck<PointCard>* Player::getPointDeck(){
 
+            return pointdeck_;
+
         }
+
+    int main() {
+    // Example usage
+    Player player1;
+    Player player2;
+
+    // // Setting opponents for each player
+    // player1.setOpponent(&player2);
+    // player2.setOpponent(&player1);
+
+    // // Creating decks for action and point cards
+    // Deck<ActionCard> actionDeck1;
+    // Deck<PointCard> pointDeck1;
+
+    // player1.setActionDeck(&actionDeck1);
+    // player1.setPointDeck(&pointDeck1);
+
+    // // ... additional interactions with Player objects
+
+    return 0;
+}
