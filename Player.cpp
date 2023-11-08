@@ -167,23 +167,4 @@ Player.cpp implements the Player class.
 
         }
 
-    int main() {
-    // Example usage
-    Player player1;
-    Player player2;
-
-    // // Setting opponents for each player
-    // player1.setOpponent(&player2);
-    // player2.setOpponent(&player1);
-
-    // // Creating decks for action and point cards
-    // Deck<ActionCard> actionDeck1;
-    // Deck<PointCard> pointDeck1;
-
-    // player1.setActionDeck(&actionDeck1);
-    // player1.setPointDeck(&pointDeck1);
-
-    // // ... additional interactions with Player objects
-
-    return 0;
-}
+  
