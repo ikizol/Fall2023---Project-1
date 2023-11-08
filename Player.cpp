@@ -90,9 +90,9 @@ Player.cpp implements the Player class.
          */
         void Player::drawPointCard(){
            
-           if (!pointdeck_.isEmpty()) {
-                PointCard pointcard = pointdeck_.Draw(); 
-                Hand player_hand = pointcard.addCard();
+           if (pointdeck_ != nullptr and !pointdeck_ -> isEmpty()) {
+                PointCard pointcard = pointdeck_ -> Draw(); 
+                hand_.addCard(pointcard);
 
            }
             
@@ -106,11 +106,13 @@ Player.cpp implements the Player class.
          */
         void Player::playPointCard(){
             
-            PointCard pointcard = pointdeck.isPlayable();
             
-            if (pointcard == true) {
-                Hand playerHand = pointdeck_.PlayCard();
-                int playerPoint_ = pointdeck_.getInstruction();
+            
+            if (pointdeck_ != nullptr && pointdeck_ -> isEmpty()) {
+                
+                PointCard pointcard = pointdeck_ -> isPlayable();
+                hand_ = pointdeck_ -> PlayCard(pointcard);
+                int playerPoint_ = pointdeck -> getInstruction(hand_);
             }
 
         }
