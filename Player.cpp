@@ -13,11 +13,11 @@ Player.cpp implements the Player class.
          */
         Player::Player(){
             
-            hand_;
+          
             score_ = 0;
             opponent_ = nullptr;
-            actiondeck_ = nullptr;
-            pointdeck_ = nullptr;
+            actiondeck_ = new Deck<ActionCard>();
+            pointdeck_ = new Deck<PointCard>();
 
         }
 
