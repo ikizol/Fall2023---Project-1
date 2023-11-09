@@ -7,9 +7,7 @@ Player.cpp implements the Player class.
 */
 
 #include "Player.hpp"
-#include <iostream>
-#include <vector>
-#include <string>
+
 
 /**
          * @post: Construct a new Player object

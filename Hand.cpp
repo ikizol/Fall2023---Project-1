@@ -132,15 +132,4 @@ Hand.cpp Defines the Hand class.
             }
 
         }
-    
-            
-            
-            
-            
-            
-            
-            
-            
-    
 
-        }
