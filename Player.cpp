@@ -29,11 +29,9 @@ Player.cpp implements the Player class.
             delete[] pointdeck_;
         }
 
-        /**
-         * @return the player's hand
-         */
-        const Hand& Player::getHand() const{
-            return hand_;
+        
+        const Hand& Player::getHand() const {
+                return hand_;
         }
 
 
@@ -80,14 +78,14 @@ Player.cpp implements the Player class.
             }
 
             else if (card.getInstruction().find("DRAW") == 0){ //if it fids the word in the instruction then it will return 0
-                    int num = std::stoi(instruction.substr(5, instruction.find(" CARD"))); //5 is the 5th character in the instruction 
+                    int num = std::stoi(card.getInstruction().substr(5, card.getInstruction().find(" CARD"))); //5 is the 5th character in the instruction 
                     for (int i = 0; i < num; i++) {
                     drawPointCard();
         }
             }
 
-            else if (card.getInstruction.find("PLAY ") == 0) {
-                 int num = std::stoi(card.getInstruction().substr(5, instruction.find(" CARD")));
+            else if (card.getInstruction().find("PLAY ") == 0) {
+                 int num = std::stoi(card.getInstruction().substr(5, card.getInstruction().find(" CARD")));
                   if (hand_.getCards().size() > 0) {
                     playPointCard();
                   }
@@ -106,9 +104,10 @@ Player.cpp implements the Player class.
          */
         void Player::drawPointCard(){
            
-           if (pointdeck_ != nullptr and !pointdeck_ -> isEmpty()) {
+
+           if (pointdeck_ != nullptr && !pointdeck_->IsEmpty()) {
                 PointCard pointcard = pointdeck_ -> Draw(); 
-                hand_.addCard(pointcard);
+                hand_.addCard(std::move(pointcard));
 
            }
             
@@ -121,11 +120,9 @@ Player.cpp implements the Player class.
          */
         void Player::playPointCard(){
         
-            if (pointdeck_ != nullptr && pointdeck_ -> isEmpty()) {
+            if (pointdeck_ != nullptr && !pointdeck_ -> IsEmpty()) {
                 
-                PointCard pointcard = pointdeck_ -> isPlayable();
-                hand_ = pointdeck_ -> PlayCard(pointcard);
-                int playerPoint_ = getInstruction(hand_);
+                int playerPoint_ = hand_.PlayCard();
                 score_ += playerPoint_;
             }
 
@@ -137,7 +134,7 @@ Player.cpp implements the Player class.
          * @param a pointer to a Player opponent 
          */
         void Player::setOpponent(Player* opponent){
-                opponent_ = oppenent; 
+                opponent_ = opponent; 
         }
 
 
@@ -145,7 +142,7 @@ Player.cpp implements the Player class.
          * @return: a pointer to the player's opponent
          */
         Player* Player::getOpponent(){
-            return opponent;
+            return opponent_;
 
         }
 
