@@ -110,10 +110,13 @@ Hand.cpp Defines the Hand class.
          * @return the points earned from playing the card
          */
         int Hand::PlayCard(){
+        
+         try {
+                
             PointCard card = cards_.front();
             cards_.pop_front();
-
-            if(isEmpty() || !card.isPlayable()) {
+                
+                if(isEmpty() || !card.isPlayable()) {
                 throw std::runtime_error("Invalid Arguement"); 
                 cards_.pop_front();   
             }
@@ -121,7 +124,23 @@ Hand.cpp Defines the Hand class.
             else {
                 int points_ = std::stoi(card.getInstruction());
                 return points_;
+            } 
+        } catch (const std::exception &error_ ){ //catching an error 
+
+            std::cerr << "ERROR!" << error_.what() <<std::endl;
+
             }
+
+        }
+    
+            
+            
+            
+            
+            
+            
+            
+            
     
 
         }

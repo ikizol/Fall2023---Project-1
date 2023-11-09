@@ -14,21 +14,15 @@ Player.cpp implements the Player class.
 /**
          * @post: Construct a new Player object
          */
-        Player::Player() : score_(0) , opponent_(nullptr) {
-            
-        
-            actiondeck_ = new Deck<ActionCard>();
-            pointdeck_ = new Deck<PointCard>();
-
+        Player::Player() {
+            score_ = 0;
+            opponent_ = nullptr;
         }
 
         /**
          * @post: Destroy the Player object
          */
-        Player::~Player(){
-            delete[] actiondeck_;
-            delete[] pointdeck_;
-        }
+        Player::~Player(){}
 
         
         const Hand& Player::getHand() const {
@@ -65,39 +59,36 @@ Player.cpp implements the Player class.
          * Begin the function by reporting the instruction of the card:
          * PLAYING ACTION CARD: [instruction]
          */
-        void Player::play(ActionCard&& card){
+        void Player::play(ActionCard&& card) {
             std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
 
-            if (card.getInstruction() == "REVERSE HAND"){
+            std::string card_instruct = card.getInstruction();
+            
+            
+            if (card_instruct == "REVERSE HAND"){
                 hand_.Reverse();
             }
 
-            else if (card.getInstruction() == "SWAP HAND WITH OPPONENT") {
-                    Hand temp_hand = hand_;
-                    hand_ = opponent_->getHand();
-                    opponent_->setHand(temp_hand);
+            else if (card_instruct == "SWAP HAND WITH OPPONENT") {
+                    std::swap(hand_, opponent_->hand_); //this is a fucntion within player function
             }
 
-            else if (card.getInstruction().find("DRAW ") == 0){ //if it fids the word in the instruction then it will return 0
-                    int num = std::stoi(card.getInstruction().substr(5, card.getInstruction().find(" CARD"))); //5 is the 5th character in the instruction 
+            else if (card_instruct.find("DRAW ") == 0){ //if it finds the word in the instruction then it will return 0
+                    int num = std::stoi(card_instruct.substr(5, card_instruct.find(" CARD"))); //5 is the 5th character in the instruction 
                     for (int i = 0; i < num; i++) {
                     drawPointCard();
-        }
-            }
+                }
+             }
+        
 
-            else if (card.getInstruction().find("PLAY ") == 0) {
-                 int num = std::stoi(card.getInstruction().substr(5, card.getInstruction().find(" CARD")));
-                  if (hand_.getCards().size() > 0) {
+            else if (card_instruct.find("PLAY ") == 0) {
+                 int num = std::stoi(card_instruct.substr(5, card_instruct.find(" CARD")));
+                  for  (int i = 0; i < num; i++) {
                     playPointCard();
-                  }
+                }
             }
 
-            else if (hand_.isEmpty()) {
-                drawPointCard();
-                playPointCard();
-            }
-
-            }
+        }
 
 
 
