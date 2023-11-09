@@ -60,7 +60,7 @@ PointCard.hpp defines the PointCard class and inherits from the Card Class.
             std::cout << "Points: " << getInstruction() << std::endl;
             std::cout << "Card: "<< std::endl;
             if (getImageData() != nullptr){
-                for (int i =0; i < 80; i++) {
+                for (int i =0; i < 79; i++) {
                     std::cout << getImageData()[i];
                 }
                 std::cout << std::endl; //formatting (left to right)
