@@ -182,5 +182,3 @@ Player.cpp implements the Player class.
             return pointdeck_;
 
         }
-
-  
