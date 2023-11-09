@@ -106,6 +106,7 @@ Player.cpp implements the Player class.
            
 
            if (pointdeck_ != nullptr && !pointdeck_->IsEmpty()) {
+                
                 PointCard pointcard = pointdeck_ -> Draw(); 
                 hand_.addCard(std::move(pointcard));
 
@@ -120,7 +121,7 @@ Player.cpp implements the Player class.
          */
         void Player::playPointCard(){
         
-            if (pointdeck_ != nullptr && !pointdeck_ -> IsEmpty()) {
+            if (!hand_.isEmpty()) {
                 
                 int playerPoint_ = hand_.PlayCard();
                 score_ += playerPoint_;
@@ -128,8 +129,7 @@ Player.cpp implements the Player class.
 
         }
 
-
-        /**
+    /**
          * @post: Set the opponent of the player
          * @param a pointer to a Player opponent 
          */
