@@ -9,6 +9,7 @@ Player.cpp implements the Player class.
 #include "Player.hpp"
 #include <iostream>
 #include <vector>
+#include <string>
 
 /**
          * @post: Construct a new Player object
@@ -72,12 +73,12 @@ Player.cpp implements the Player class.
             }
 
             else if (card.getInstruction() == "SWAP HAND WITH OPPONENT") {
-                Hand temp_hand = hand_;
-                opponent_ -> setHand(temp_hand);
-                hand_ = opponent_ -> getHand();
+                    Hand temp_hand = hand_;
+                    hand_ = opponent_->getHand();
+                    opponent_->setHand(temp_hand);
             }
 
-            else if (card.getInstruction().find("DRAW") == 0){ //if it fids the word in the instruction then it will return 0
+            else if (card.getInstruction().find("DRAW ") == 0){ //if it fids the word in the instruction then it will return 0
                     int num = std::stoi(card.getInstruction().substr(5, card.getInstruction().find(" CARD"))); //5 is the 5th character in the instruction 
                     for (int i = 0; i < num; i++) {
                     drawPointCard();
@@ -95,6 +96,7 @@ Player.cpp implements the Player class.
                 drawPointCard();
                 playPointCard();
             }
+
             }
 
 
