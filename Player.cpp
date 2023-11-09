@@ -7,15 +7,15 @@ Player.cpp implements the Player class.
 */
 
 #include "Player.hpp"
+#include <iostream>
+#include <vector>
 
 /**
          * @post: Construct a new Player object
          */
-        Player::Player(){
+        Player::Player() : score_(0) , opponent_(nullptr) {
             
-          
-            score_ = 0;
-            opponent_ = nullptr;
+        
             actiondeck_ = new Deck<ActionCard>();
             pointdeck_ = new Deck<PointCard>();
 
@@ -25,28 +25,19 @@ Player.cpp implements the Player class.
          * @post: Destroy the Player object
          */
         Player::~Player(){
-            if (actiondeck_ != nullptr){
-                delete actiondeck_;
-                actiondeck_ = nullptr;
-            }
-
-           if (pointdeck_ != nullptr){
-                delete actiondeck_;
-                pointdeck_ = nullptr;
+            delete[] actiondeck_;
+            delete[] pointdeck_;
         }
 
         /**
          * @return the player's hand
          */
-        const Hand& Player::getHand() const {
-                return hand_;
-
+        const Hand& Player::getHand() const{
+            return hand_;
         }
 
-        /**
-         * @post: Set the player's hand
-         * @param const reference to a hand object
-         */
+
+        
         void Player::setHand(const Hand& hand){
             hand_ = hand; 
 
