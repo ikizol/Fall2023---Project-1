@@ -78,12 +78,37 @@ Player.cpp implements the Player class.
         void Player::play(ActionCard&& card){
             std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
 
-            ActionCard actioncard = card.isPlayable();
-             if (actioncard == true) {
-                    card.PlayCard();
-                }
-
+            if (card.getInstruction() == "REVERSE HAND"){
+                hand_.Reverse();
             }
+
+            else if (card.getInstruction() == "SWAP HAND WITH OPPONENT") {
+                Hand temp_hand = hand_;
+                opponent_ -> setHand(temp_hand);
+                hand_ = opponent_ -> getHand();
+            }
+
+            else if (card.getInstruction().find("DRAW") == 0){ //if it fids the word in the instruction then it will return 0
+                    int num = std::stoi(instruction.substr(5, instruction.find(" CARD"))); //5 is the 5th character in the instruction 
+                    for (int i = 0; i < num; i++) {
+                    drawPointCard();
+        }
+            }
+
+            else if (card.getInstruction.find("PLAY ") == 0) {
+                 int num = std::stoi(card.getInstruction().substr(5, instruction.find(" CARD")));
+                  if (hand_.getCards().size() > 0) {
+                    playPointCard();
+                  }
+            }
+
+            else if (hand_.isEmpty()) {
+                drawPointCard();
+                playPointCard();
+            }
+            }
+
+
 
         /**
          * @post: Draw a point card and place it in the player's hand
@@ -96,7 +121,6 @@ Player.cpp implements the Player class.
 
            }
             
-
         }
 
         
@@ -105,9 +129,7 @@ Player.cpp implements the Player class.
          * @post: Play a point card from the player's hand and update the player's score
          */
         void Player::playPointCard(){
-            
-            
-            
+        
             if (pointdeck_ != nullptr && pointdeck_ -> isEmpty()) {
                 
                 PointCard pointcard = pointdeck_ -> isPlayable();
