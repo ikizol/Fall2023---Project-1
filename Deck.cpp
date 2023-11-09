@@ -5,7 +5,7 @@
          */
         template<typename CardType>
         Deck<CardType>::Deck() {
-            cards_.clear();//this vector starts out empty for each object of this class
+            cards_;//this vector starts out empty for each object of this class
         };
 
 
@@ -14,7 +14,7 @@
          */
         template<typename CardType>
         Deck<CardType>::~Deck() {
-            
+            cards_.clear();
             
         };
 
